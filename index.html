@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>할인계산</title>
+    <style>
+        *{margin: 0; padding: 0;}
+        body{
+            margin-left: 10%;
+        }
+        h1{
+            margin-top: 20px;
+            margin-left: 6%;
+        }
+        ul{list-style: none; margin-top:50px;}
+        li{margin-bottom: 10px;}
+        ul>li label{
+            width: 100px; float: left; text-align: right; margin-right: 20px;
+        }
+        input[type="text"]{
+            width: 120px; padding: 5px 10px;
+        }
+        button{
+            padding: 5px 15px;
+            margin-left: 30px; margin-top: 20px;}
+        #showResult{
+            text-align: center;
+            align-content: center;
+            width: 500px; height: 250px;
+            background-color: rgb(209, 230, 243);
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <h1>할인계산 프로그램</h1>
+    <ul>
+        <li>
+            <label for="originPrice">원래가격</label>
+            <input type="text" id="originPrice">원
+        </li>
+        <li>
+            <label for="rate">할인율</label>
+            <input type="text" id="rate">%
+        </li>
+        <button onclick="showPrice()">할인가격 계산하기</button>
+        <li>
+    </ul>
+    <div id="showResult"></div>
+    <script>
+        function showPrice(){
+        let originPrice = parseFloat(document.getElementById("originPrice").value);
+        let rate = parseFloat(document.getElementById("rate").value);
+        let savePrice = 0;
+        let resultPrice = 0;
+        
+        if(originPrice > 0 && rate > 0){
+            savePrice = originPrice * (rate / 100);
+            resultPrice = originPrice - savePrice;
+        }
+
+        document.getElementById("showResult").innerHTML =
+        "상품의 원래 가격은" + originPrice + "원이고,<br>" + 
+        "할인율은 " + rate + "%입니다.<br>" +
+        savePrice + "원을 절약한" + resultPrice + "원에 살 수 있습니다.";
+    }
+    </script>
+</body>
+</html>
